@@ -111,6 +111,9 @@
     .stat:nth-child(n+4){border-bottom:none}
   }
   .stat .v{font-size:clamp(26px,4.2vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .stat .v span{display:inline-block}
+  .stat .v span.bump{animation:bumpA .9s ease}
+  @keyframes bumpA{0%{color:#16a34a;transform:scale(1.15)}100%{color:inherit;transform:scale(1)}}
   .stat .v small{font-size:.48em;font-weight:700;color:var(--muted);letter-spacing:0}
   .stat .k{margin-top:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1.5}
   .pbar{margin-top:12px;height:12px;border:2px solid var(--line);border-radius:999px;background:var(--card);overflow:hidden}
@@ -359,7 +362,7 @@
       </div>
       <div class="live-bar" aria-live="polite">
         <span class="live-dot" id="liveDot" aria-hidden="true"></span>
-        <span><b id="liveStatus">连接中</b> — 发售数据每 15 秒自动刷新</span>
+        <span><b id="liveStatus">连接中</b> — 发售数据每 4 秒自动刷新</span>
         <span>最后更新：<span id="lastUpdate">—</span></span>
         <span>数据来源：NFT 合约 status() · BSC 链上</span>
       </div>
@@ -662,7 +665,7 @@
           <li><b>付费阶段</b>：免费阶段结束后自动开启。调用 <code>mintPaid(uint256)</code>，每张 0.003 BNB，总上限 15,000 张，每个 Agent ID 累计最多 10 张。</li>
           <li><b>NFT 总量上限</b>：16,500 张（1,500 免费 + 15,000 付费）。</li>
           <li><b>收入去向</b>：全部铸造收入在交易内直接转入 payee <code>0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3</code>，无分成、无托管。</li>
-          <li><b>状态查询</b>：合约 <code>status()</code> 实时返回阶段、免费/付费已售、已铸造总量、价格、免费费、开始与免费结束时间及剩余名额；本页每 15 秒轮询一次。</li>
+          <li><b>状态查询</b>：合约 <code>status()</code> 实时返回阶段、免费/付费已售、已铸造总量、价格、免费费、开始与免费结束时间及剩余名额；本页每 4 秒轮询一次（多节点竞速取最快响应）。</li>
         </ul>
       </div>
 
@@ -804,7 +807,7 @@
   var NFT_CONTRACT = "0xDBE8C42d7fB7108bEd4484fC4400F70f526F1412";
   var MARKET_CONTRACT = "0xb45b2347B6DDfC3C79D34f9f7061af23F7FeCf92";
   var PAYEE = "0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3";
-  var BSC_RPC_ENDPOINTS = ["https://bsc-dataseed.bnbchain.org", "https://bsc-rpc.publicnode.com"];
+  var BSC_RPC_ENDPOINTS = ["https://bsc-dataseed.bnbchain.org", "https://bsc-dataseed1.defibit.io", "https://bsc-rpc.publicnode.com", "https://bsc-dataseed.ninicoin.io", "https://rpc.ankr.com/bsc"];
   var STATUS_SELECTOR = "0x200d2ed2"; // status()
   var MINTFREE_SELECTOR = "0x8ab53447"; // mintFree()
   var MINTPAID_SELECTOR = "0x26c7f77c"; // mintPaid(uint256)
@@ -1040,17 +1043,18 @@
     render();
   })();
 
-  // ===== 实时发售数据：轮询 NFT 合约 status()，每 15 秒刷新 =====
+  // ===== 实时发售数据：轮询 NFT 合约 status()，每 4 秒刷新 =====
   var chainState = { phase: null, freeSold: 0, paidSold: 0, minted: 0, priceWei: PRICE_PER_NFT_WEI, freeFeeWei: FREE_FEE_WEI, start: FALLBACK_START, freeEnd: FALLBACK_FREE_END, freeRemaining: FREE_QUOTA, paidRemaining: PAID_QUOTA, live: false };
   var PHASE_NAMES = ["未开始", "免费阶段进行中", "付费阶段进行中"];
 
   function renderStatus() {
     var s = chainState;
-    if ($("statFree")) $("statFree").textContent = fmtInt(s.freeSold);
-    if ($("statPaid")) $("statPaid").textContent = fmtInt(s.paidSold);
-    if ($("statMinted")) $("statMinted").textContent = fmtInt(s.minted);
-    if ($("statFreeRemain")) $("statFreeRemain").textContent = fmtInt(s.freeRemaining);
-    if ($("statPaidRemain")) $("statPaidRemain").textContent = fmtInt(s.paidRemaining);
+    function setStat(id, val) { var el = $(id); if (!el) return; var t = fmtInt(val); if (el.textContent !== t) { el.textContent = t; el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump"); } }
+    setStat("statFree", s.freeSold);
+    setStat("statPaid", s.paidSold);
+    setStat("statMinted", s.minted);
+    setStat("statFreeRemain", s.freeRemaining);
+    setStat("statPaidRemain", s.paidRemaining);
     if ($("statPrice") && s.priceWei > 0n) $("statPrice").textContent = formatBNB(s.priceWei);
     if ($("barFree")) $("barFree").style.width = Math.min(100, s.freeSold / FREE_QUOTA * 100) + "%";
     if ($("barPaid")) $("barPaid").style.width = Math.min(100, s.paidSold / PAID_QUOTA * 100) + "%";
@@ -1106,11 +1110,15 @@
   }
 
   function rpcEthCall(rpcUrl) {
+    var ctl = ("AbortController" in window) ? new AbortController() : null;
+    var timer = ctl ? setTimeout(function () { ctl.abort(); }, 3000) : null;
     return fetch(rpcUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      signal: ctl ? ctl.signal : undefined,
       body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to: NFT_CONTRACT, data: STATUS_SELECTOR }, "latest"] })
     }).then(function (r) { return r.json(); }).then(function (j) {
+      if (timer) clearTimeout(timer);
       if (!j || !j.result || j.result === "0x") throw new Error("empty result");
       return j.result;
     });
@@ -1139,10 +1147,9 @@
   }
 
   function refreshSale() {
-    var chain = Promise.reject(new Error("start"));
-    BSC_RPC_ENDPOINTS.forEach(function (url) {
-      chain = chain.catch(function () { return rpcEthCall(url); });
-    });
+    var attempts = BSC_RPC_ENDPOINTS.map(function (url) { return rpcEthCall(url); });
+    var chain = (typeof Promise.any === "function") ? Promise.any(attempts) :
+      attempts.reduce(function (p, q) { return p.catch(function () { return q; }); }, Promise.reject(new Error("start")));
     chain.then(function (hex) {
       var s = parseStatus(hex);
       s.live = true;
@@ -1158,7 +1165,9 @@
   renderStatus();
   tickCountdown();
   refreshSale();
-  setInterval(refreshSale, 15000);
+  setInterval(refreshSale, 4000);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) refreshSale(); });
+  window.addEventListener("focus", refreshSale);
   setInterval(tickCountdown, 1000);
 
   // ===== 数量选择（付费铸造 1–10）=====
