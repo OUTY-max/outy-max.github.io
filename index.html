@@ -314,7 +314,7 @@
       <p class="lead">第一阶段只卖 NFT，<em>先测试市场。</em>代币第二阶段再创建，按快照分配。</p>
       <div>
         <p class="sub">OUTY 第一阶段是 <strong>BNB Chain 上的 NFT 发售</strong>，专为 <strong>Binance Agent ID 持有人</strong>设计 —— 先以 NFT 测试市场真实需求。<strong>OUTY 代币尚未创建</strong>：代币将在第二阶段创建，分配<strong>等待快照（Snapshot）</strong>—— 快照时每持有 1 张 OUTY NFT，即享有 <strong>30,000,000 OUTY</strong> 的分配权益，分配概念与原定方案一致。</p>
-        <p class="sub">NFT 合约：<code>0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE</code>，已在 BNB Smart Chain（chainId 56）部署并通过 Sourcify 精确匹配验证。发售于 <strong>2026 年 11 月 13 日 07:00:21（北京时间）</strong>开始。</p>
+        <p class="sub">NFT 合约：<code>0x9dafe93975203dafa6956bc70B7526644Db2504f</code>，已在 BNB Smart Chain（chainId 56）部署并通过 Sourcify 精确匹配验证。发售于 <strong>2026 年 11 月 13 日 08:00:20（北京时间）</strong>开始。</p>
       </div>
     </div>
 
@@ -402,10 +402,10 @@
         <ul>
           <li><span><b>需持有 Agent ID</b> —— 仅限 Binance Agent ID 持有人，资格由合约强制校验。</span></li>
           <li><span><b>每个 Agent ID 限 1 张</b> —— 不可重复领取。</span></li>
-          <li><span>名额共 <b>1,500</b> 个 —— 先到先得（FCFS）；名额用完或 <b>2026 年 11 月 14 日 07:00:21（北京时间）</b>免费阶段结束，即自动进入付费阶段。</span></li>
+          <li><span>名额共 <b>1,500</b> 个 —— 先到先得（FCFS）；名额用完或 <b>2026 年 11 月 14 日 08:00:20（北京时间）</b>免费阶段结束，即自动进入付费阶段。</span></li>
           <li><span>调用 <b>mintFree()</b>，金额精确为 <b>0.0001 BNB</b>（100000000000000 wei），另加链上 Gas。</span></li>
         </ul>
-        <p class="note">免费阶段：<b>2026 年 11 月 13 日 07:00:21 — 11 月 14 日 07:00:21（北京时间）</b>，或 1,500 个名额用完为止（以先到者为准）。</p>
+        <p class="note">免费阶段：<b>2026 年 11 月 13 日 08:00:20 — 11 月 14 日 08:00:20（北京时间）</b>，或 1,500 个名额用完为止（以先到者为准）。</p>
         <div class="cta">
           <button class="btn" type="button" id="btnMintFree">免费铸造 — mintFree()</button>
           <p class="cta-sub" id="freeCtaSub">剩余名额读取中</p>
@@ -548,10 +548,10 @@
 
     <div class="contract-card">
       <div class="k">市场合约 · OutyMarket · BNB Smart Chain</div>
-      <div class="addr">0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE</div>
+      <div class="addr">0x428f052AebAEA374074e4fBb1Fcb25EC2603b451</div>
       <div class="links">
-        <a class="btn secondary btn-link" href="https://bscscan.com/address/0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE" target="_blank" rel="noopener">在 BscScan 查看</a>
-        <a class="btn secondary btn-link" href="https://bscscan.com/address/0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE" target="_blank" rel="noopener">NFT 合约</a>
+        <a class="btn secondary btn-link" href="https://bscscan.com/address/0x428f052AebAEA374074e4fBb1Fcb25EC2603b451" target="_blank" rel="noopener">在 BscScan 查看</a>
+        <a class="btn secondary btn-link" href="https://bscscan.com/address/0x9dafe93975203dafa6956bc70B7526644Db2504f" target="_blank" rel="noopener">NFT 合约</a>
       </div>
     </div>
 
@@ -568,7 +568,7 @@
         </div>
         <div>
           <h4>合约开源验证</h4>
-          <p>市场合约 <code>0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE</code> 已通过 Sourcify 精确匹配验证，任何人都可以逐行审查挂单、成交与手续费逻辑。</p>
+          <p>市场合约 <code>0x428f052AebAEA374074e4fBb1Fcb25EC2603b451</code> 已通过 Sourcify 精确匹配验证，任何人都可以逐行审查挂单、成交与手续费逻辑。</p>
         </div>
         <div>
           <h4>快照与市场的关系</h4>
@@ -611,7 +611,7 @@
       </details>
       <details>
         <summary>免费铸造为什么还要付 0.0001 BNB？</summary>
-        <p>免费指的是 NFT 本身不另外收费；调用 mintFree() 时合约要求交易金额精确为 0.0001 BNB（100000000000000 wei），另加 BNB Chain 的 Gas。该费用与全部铸造收入一样，在交易内直接进入 payee 金库。每个 Agent ID 限 1 张，免费名额共 1,500 个，阶段窗口为 2026 年 11 月 13 日 07:00:21 至 11 月 14 日 07:00:21（北京时间），名额用完即提前结束。</p>
+        <p>免费指的是 NFT 本身不另外收费；调用 mintFree() 时合约要求交易金额精确为 0.0001 BNB（100000000000000 wei），另加 BNB Chain 的 Gas。该费用与全部铸造收入一样，在交易内直接进入 payee 金库。每个 Agent ID 限 1 张，免费名额共 1,500 个，阶段窗口为 2026 年 11 月 13 日 08:00:20 至 11 月 14 日 08:00:20（北京时间），名额用完即提前结束。</p>
       </details>
       <details>
         <summary>付费铸造的规则是什么？</summary>
@@ -631,7 +631,7 @@
       </details>
       <details>
         <summary>NFT 可以在哪里交易？手续费多少？</summary>
-        <p>通过本站市场合约 0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE 按 tokenId 挂单交易。市场为非托管模式，成交手续费 2.5%，进入 payee 金库。</p>
+        <p>通过本站市场合约 0x428f052AebAEA374074e4fBb1Fcb25EC2603b451 按 tokenId 挂单交易。市场为非托管模式，成交手续费 2.5%，进入 payee 金库。</p>
       </details>
       <details>
         <summary>NFT 的元数据在哪里？</summary>
@@ -657,8 +657,8 @@
       <div class="wp-sec">
         <h2><span class="no">02</span>第一阶段：NFT 发售</h2>
         <ul>
-          <li><b>发售开始</b>：2026 年 11 月 13 日 07:00:21（北京时间）。</li>
-          <li><b>免费阶段</b>：至 2026 年 11 月 14 日 07:00:21（北京时间）或 1,500 个名额用完为止（先到者为准）。调用 <code>mintFree()</code>，金额精确 0.0001 BNB，每个 Agent ID 限 1 张，<b>需持有 Agent ID</b>。</li>
+          <li><b>发售开始</b>：2026 年 11 月 13 日 08:00:20（北京时间）。</li>
+          <li><b>免费阶段</b>：至 2026 年 11 月 14 日 08:00:20（北京时间）或 1,500 个名额用完为止（先到者为准）。调用 <code>mintFree()</code>，金额精确 0.0001 BNB，每个 Agent ID 限 1 张，<b>需持有 Agent ID</b>。</li>
           <li><b>付费阶段</b>：免费阶段结束后自动开启。调用 <code>mintPaid(uint256)</code>，每张 0.003 BNB，总上限 15,000 张，每个 Agent ID 累计最多 10 张。</li>
           <li><b>NFT 总量上限</b>：16,500 张（1,500 免费 + 15,000 付费）。</li>
           <li><b>收入去向</b>：全部铸造收入在交易内直接转入 payee <code>0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3</code>，无分成、无托管。</li>
@@ -668,7 +668,7 @@
 
       <div class="wp-sec">
         <h2><span class="no">03</span>NFT 市场</h2>
-        <p>本站市场合约 <code>0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE</code> 用于按 <b>tokenId</b> 挂单交易 OUTY NFT。市场为<b>非托管</b>模式：管理员不持有用户资产，成交时由合约自动交割；成交手续费 <b>2.5%</b> 进入 payee 金库。NFT 与市场合约均已通过 Sourcify 精确匹配验证。</p>
+        <p>本站市场合约 <code>0x428f052AebAEA374074e4fBb1Fcb25EC2603b451</code> 用于按 <b>tokenId</b> 挂单交易 OUTY NFT。市场为<b>非托管</b>模式：管理员不持有用户资产，成交时由合约自动交割；成交手续费 <b>2.5%</b> 进入 payee 金库。NFT 与市场合约均已通过 Sourcify 精确匹配验证。</p>
       </div>
 
       <div class="wp-sec">
@@ -697,8 +697,8 @@
       <div class="wp-sec">
         <h2><span class="no">06</span>合约地址</h2>
         <ul>
-          <li>NFT 合约（OutyNFT）：<code>0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE</code>（Sourcify 精确验证）</li>
-          <li>市场合约（OutyMarket）：<code>0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE</code>（Sourcify 精确验证）</li>
+          <li>NFT 合约（OutyNFT）：<code>0x9dafe93975203dafa6956bc70B7526644Db2504f</code>（Sourcify 精确验证）</li>
+          <li>市场合约（OutyMarket）：<code>0x428f052AebAEA374074e4fBb1Fcb25EC2603b451</code>（Sourcify 精确验证）</li>
           <li>Payee 金库：<code>0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3</code></li>
           <li>代币合约（OUTY）：<b>第二阶段创建，尚未部署</b></li>
         </ul>
@@ -786,8 +786,8 @@
         <div class="foot-big">OUTY<span style="color:var(--coral)">.</span></div>
       </div>
       <div class="contracts" aria-label="合约地址与网站">
-        <div><span class="k">NFT 合约 OutyNFT&nbsp;&nbsp;</span><a class="addr" href="https://bscscan.com/address/0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE" target="_blank" rel="noopener">0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE</a></div>
-        <div><span class="k">市场合约 OutyMarket&nbsp;&nbsp;</span><a class="addr" href="https://bscscan.com/address/0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE" target="_blank" rel="noopener">0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE</a></div>
+        <div><span class="k">NFT 合约 OutyNFT&nbsp;&nbsp;</span><a class="addr" href="https://bscscan.com/address/0x9dafe93975203dafa6956bc70B7526644Db2504f" target="_blank" rel="noopener">0x9dafe93975203dafa6956bc70B7526644Db2504f</a></div>
+        <div><span class="k">市场合约 OutyMarket&nbsp;&nbsp;</span><a class="addr" href="https://bscscan.com/address/0x428f052AebAEA374074e4fBb1Fcb25EC2603b451" target="_blank" rel="noopener">0x428f052AebAEA374074e4fBb1Fcb25EC2603b451</a></div>
         <div><span class="k">Payee 金库&nbsp;&nbsp;</span><span class="addr">0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3</span></div>
         <div><span class="k">代币合约 OUTY&nbsp;&nbsp;</span>第二阶段创建 · 尚未部署（等待快照）</div>
         <div><span class="k">元数据&nbsp;&nbsp;</span>outy.pages.dev/metadata/&lt;tokenId&gt;</div>
@@ -801,8 +801,8 @@
 
 <script>
   // ===== 常量：已部署合约（BNB Smart Chain, chainId 56）=====
-  var NFT_CONTRACT = "0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE";
-  var MARKET_CONTRACT = "0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE";
+  var NFT_CONTRACT = "0x9dafe93975203dafa6956bc70B7526644Db2504f";
+  var MARKET_CONTRACT = "0x428f052AebAEA374074e4fBb1Fcb25EC2603b451";
   var PAYEE = "0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3";
   var BSC_RPC_ENDPOINTS = ["https://bsc-dataseed.bnbchain.org", "https://bsc-rpc.publicnode.com"];
   var STATUS_SELECTOR = "0x200d2ed2"; // status()
@@ -812,8 +812,8 @@
   var PRICE_PER_NFT_WEI = 3000000000000000n; // 0.003 BNB
   var FREE_QUOTA = 1500;
   var PAID_QUOTA = 15000;
-  var FALLBACK_START = 1794524421; // 2026-11-13 07:00:21 北京时间
-  var FALLBACK_FREE_END = 1794610821; // 2026-11-14 07:00:21 北京时间
+  var FALLBACK_START = 1794528020; // 2026-11-13 08:00:20 北京时间
+  var FALLBACK_FREE_END = 1794614420; // 2026-11-14 08:00:20 北京时间
 
   function $(id) { return document.getElementById(id); }
   function fmtInt(n) { return Number(n).toLocaleString("en-US"); }
@@ -842,9 +842,9 @@
     verification: "NFT 与市场合约均为 Sourcify exact match",
     sale: {
       startUnix: FALLBACK_START,
-      startBeijing: "2026-11-13 07:00:21 北京时间 (UTC+8)",
+      startBeijing: "2026-11-13 08:00:20 北京时间 (UTC+8)",
       freeEndUnix: FALLBACK_FREE_END,
-      freeEndBeijing: "2026-11-14 07:00:21 北京时间 (UTC+8)",
+      freeEndBeijing: "2026-11-14 08:00:20 北京时间 (UTC+8)",
       statusFunction: "status() -> (phase, freeSold, paidSold, minted, price, freeFee, start, freeEnd, freeRemaining, paidRemaining)",
       phases: { "0": "未开始", "1": "免费阶段", "2": "付费阶段" },
       free: {
@@ -901,8 +901,8 @@
     "- NFT 合约 OutyNFT: " + NFT_CONTRACT + "（Sourcify exact match 验证）",
     "- 市场合约 OutyMarket: " + MARKET_CONTRACT + "（Sourcify exact match 验证）",
     "- Payee 金库: " + PAYEE,
-    "- 发售开始: 2026-11-13 07:00:21 北京时间 (UTC+8)，unix " + FALLBACK_START,
-    "- 免费阶段: 至 2026-11-14 07:00:21 北京时间 (unix " + FALLBACK_FREE_END + ") 或 1,500 个名额用完为止。调用 mintFree()，交易金额精确 0.0001 BNB (100000000000000 wei)，每个 Agent ID 限 1 张，需持有 Agent ID。",
+    "- 发售开始: 2026-11-13 08:00:20 北京时间 (UTC+8)，unix " + FALLBACK_START,
+    "- 免费阶段: 至 2026-11-14 08:00:20 北京时间 (unix " + FALLBACK_FREE_END + ") 或 1,500 个名额用完为止。调用 mintFree()，交易金额精确 0.0001 BNB (100000000000000 wei)，每个 Agent ID 限 1 张，需持有 Agent ID。",
     "- 付费阶段: 免费阶段结束后自动开启。调用 mintPaid(uint256)，每张 0.003 BNB (3000000000000000 wei)，总量 15,000 张，每个 Agent ID 累计最多 10 张，需持有 Agent ID。",
     "- 状态查询: 对 NFT 合约调用 status()，返回 (phase, freeSold, paidSold, minted, price, freeFee, start, freeEnd, freeRemaining, paidRemaining)；phase: 0=未开始, 1=免费阶段, 2=付费阶段。",
     "- 收入去向: 全部铸造收入在交易内直接转入 payee，无分成、无合约托管。",
@@ -1089,8 +1089,8 @@
     var s = chainState;
     var now = Math.floor(Date.now() / 1000);
     var target = null, label = "";
-    if (s.phase === 0 || (s.phase === null && now < s.start)) { target = s.start; label = "距离发售开始（2026-11-13 07:00:21 北京时间）"; }
-    else if (s.phase === 1 || (s.phase === null && now < s.freeEnd)) { target = s.freeEnd; label = "距离免费阶段结束（2026-11-14 07:00:21 北京时间）"; }
+    if (s.phase === 0 || (s.phase === null && now < s.start)) { target = s.start; label = "距离发售开始（2026-11-13 08:00:20 北京时间）"; }
+    else if (s.phase === 1 || (s.phase === null && now < s.freeEnd)) { target = s.freeEnd; label = "距离免费阶段结束（2026-11-14 08:00:20 北京时间）"; }
     var cd = $("countdown"), cl = $("countdownLabel");
     if (!cd) return;
     if (target === null) {
@@ -1225,7 +1225,7 @@
   function doMint(kind) {
     var isFree = kind === "free";
     if (isFree && chainState.live && chainState.phase !== 1) {
-      setTxMsg("<b>当前不在免费阶段。</b>免费阶段为 2026 年 11 月 13 日 07:00:21 — 11 月 14 日 07:00:21（北京时间），或 1,500 个名额用完为止。");
+      setTxMsg("<b>当前不在免费阶段。</b>免费阶段为 2026 年 11 月 13 日 08:00:20 — 11 月 14 日 08:00:20（北京时间），或 1,500 个名额用完为止。");
       return;
     }
     if (!isFree && chainState.live && chainState.phase !== 2) {
