@@ -1,8 +1,8 @@
 # OUTY — Agent Instructions
 
 OUTY is an Agent ID NFT project on BNB Smart Chain (chainId 56).
-Website: https://outy-max.github.io/
-Machine-readable data: https://outy-max.github.io/agent.json
+Website: https://outy.pages.dev
+Machine-readable data: https://outy.pages.dev/agent.json
 
 Phase 1 is the NFT launch only — a market test. There is NO OUTY token yet.
 The token (Phase 2) will be distributed later by SNAPSHOT of OUTY NFT holders:
@@ -10,16 +10,16 @@ each NFT held at the snapshot is planned to carry 30,000,000 OUTY.
 
 ## Contracts (deployed, Sourcify exact match)
 
-- NFT (OutyNFT, ERC-721): 0xDBE8C42d7fB7108bEd4484fC4400F70f526F1412
-- Market (OutyMarket, non-custodial): 0xb45b2347B6DDfC3C79D34f9f7061af23F7FeCf92
+- NFT (OutyNFT, ERC-721): 0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE
+- Market (OutyMarket, non-custodial): 0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE
 - Agent ID registry: 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
 - Payee (receives all mint proceeds and market fees): 0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3
 - Metadata base: https://outy.pages.dev/metadata/<tokenId>
 
 ## Sale phases
 
-1. PENDING — before start (2026-11-12T19:03:47Z = 13 Nov 2026 03:03:47 Beijing time, UTC+8). Nothing can be minted.
-2. FREE — from start until 2026-11-13T19:03:47Z (14 Nov 2026 03:03:47 Beijing time) or until the 1,500 free supply is gone.
+1. PENDING — before start (2026-11-12T22:00:21Z = 13 Nov 2026 07:00:21 Beijing time, UTC+8). Nothing can be minted.
+2. FREE — from start until 2026-11-13T22:00:21Z (14 Nov 2026 07:00:21 Beijing time) or until the 1,500 free supply is gone.
    The first 1,500 Agent IDs mint 1 NFT each; mintFree() costs exactly 0.0001 BNB (service fee, forwarded to the payee).
 3. PAID — after the free phase ends. 0.003 BNB per NFT via mintPaid(qty), max 10 per Agent ID in total, cap 15,000.
 

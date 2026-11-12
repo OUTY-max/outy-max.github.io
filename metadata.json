@@ -1,0 +1,9 @@
+{
+  "name": "OUTY NFT",
+  "description": "OUTY NFT for Binance Agent ID holders on BNB Smart Chain. Phase 1 NFT mint. Phase 2: the OUTY token will be distributed by snapshot of NFT holders - each NFT held at the snapshot is planned to carry 30,000,000 OUTY.",
+  "external_url": "https://outy.pages.dev",
+  "attributes": [
+    { "trait_type": "Project", "value": "OUTY" },
+    { "trait_type": "Phase 2 entitlement", "value": "30,000,000 OUTY per NFT (snapshot)" }
+  ]
+}

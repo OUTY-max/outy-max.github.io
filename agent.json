@@ -3,18 +3,18 @@
   "symbol": "OUTY",
   "chain": "BNB Smart Chain",
   "chainId": 56,
-  "website": "https://outy-max.github.io/",
+  "website": "https://outy.pages.dev",
   "description": "Agent ID NFT mint (Phase 1). The NFT launch is the market test; the OUTY token comes later (Phase 2) and will be distributed by snapshot of NFT holders. Free phase: the first 1,500 Agent IDs mint 1 NFT each for a 0.0001 BNB service fee. Paid phase: 0.003 BNB per NFT, max 10 per Agent ID, cap 15,000. All mint proceeds are forwarded to the payee inside the mint transaction. No owner, no pause, no upgrade, no withdrawal function.",
   "contracts": {
-    "nft": "0xDBE8C42d7fB7108bEd4484fC4400F70f526F1412",
-    "market": "0xb45b2347B6DDfC3C79D34f9f7061af23F7FeCf92",
+    "nft": "0x21CC09Dd13e1daF99E3b758cab6862A395fACdFE",
+    "market": "0x7f95AF99286b6c9dC95fC84b9C04d2E766aF11EE",
     "agentIdRegistry": "0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F",
     "payee": "0xB5d7aec297705337F3e09Ec4F802a580EFfEa0D3"
   },
   "verified": "Both contracts are verified on Sourcify with exact match (creation and runtime).",
   "sale": {
-    "startUTC": "2026-11-12T19:03:47Z",
-    "freeEndUTC": "2026-11-13T19:03:47Z",
+    "startUTC": "2026-11-12T22:00:21Z",
+    "freeEndUTC": "2026-11-13T22:00:21Z",
     "freeSupply": 1500,
     "paidCap": 15000,
     "freePerAgent": 1,
@@ -22,8 +22,8 @@
     "pricePerNFTBNB": "0.003",
     "freeFeeBNB": "0.0001",
     "marketFeeBps": 250,
-    "startBeijing": "2026-11-13T03:03:47+08:00",
-    "freeEndBeijing": "2026-11-14T03:03:47+08:00"
+    "startBeijing": "2026-11-13T07:00:21+08:00",
+    "freeEndBeijing": "2026-11-14T07:00:21+08:00"
   },
   "agentActions": {
     "checkStatus": "call status() on the NFT contract; returns (phase, freeSold, paidSold, minted, priceWei, freeFeeWei, startUnix, freeEndUnix, freeRemaining, paidRemaining). phase: 0=pending, 1=free phase, 2=paid phase",
